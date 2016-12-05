@@ -1,4 +1,5 @@
 import arcade
+from random import randint
 
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 600
@@ -9,9 +10,9 @@ class MainScreen(arcade.Window):
 		arcade.set_background_color(arcade.color.BABY_PINK)
 
 		self.cat_sprites = []
-		for i in range(1, 13):
-			self.cat_sprites.append(arcade.Sprite('images/' + str(i) + '.png'))
-			
+		for i in range(1, randint(1, 9)):
+			self.cat_sprites.append(arcade.Sprite('images/' + str(randint(1, 12)) + '.png'))
+			self.cat_sprites[i - 1].set_position(randint(10, 1000) / 10 * 10, randint(10, 600) / 10 * 10)
 
 	def on_draw(self):
 		arcade.start_render()
