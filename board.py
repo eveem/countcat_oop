@@ -9,8 +9,9 @@ class MainScreen(arcade.Window):
 		super().__init__(width, height)
 		arcade.set_background_color(arcade.color.BABY_PINK)
 
-		self.score_left = randint(0, 9)
-		self.score_right = randint(0, 9)
+		start = randint(0, 9)
+		self.score_left = start
+		self.score_right = start
 		self.cat_sprites = []
 
 		self.total_cat = randint(3, 9)
@@ -45,11 +46,30 @@ class MainScreen(arcade.Window):
 		self.number_left.set_position(200, 75)
 		self.number_left.draw()
 
+		self.number_right = arcade.Sprite('images/' + str(self.score_right) + '.png')
+		self.number_right.set_position(800, 75)
+		self.number_right.draw()
+
 	def on_key_press(self, key, key_modifiers):
 		if key == arcade.key.A:
+			self.score_left -= 1
+		elif key == arcade.key.D:
 			self.score_left += 1
-			if self.score_left > 9:
-				self.score_left = 0
+
+		if key == arcade.key.J:
+			self.score_right -= 1
+		elif key == arcade.key.L:
+			self.score_right += 1
+
+		if self.score_left > 9:
+			self.score_left = 0
+		elif self.score_left < 0:
+			self.score_left = 9
+
+		if self.score_right > 9:
+			self.score_right = 0
+		elif self.score_right < 0:
+			self.score_right = 9
 
 if __name__ == '__main__':
 	window = MainScreen(SCREEN_WIDTH, SCREEN_HEIGHT)
