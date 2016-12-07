@@ -13,10 +13,15 @@ class MainScreen(arcade.Window):
 
 		self.total_cat = randint(3, 9)
 		
-		self.plus = arcade.Sprite('images/plus.png')
-		self.minus = arcade.Sprite('images/minus.png')
-		self.plus.set_position(100, 75)
-		self.minus.set_position(200, 75)
+		self.plus_left = arcade.Sprite('images/plus.png')
+		self.minus_left = arcade.Sprite('images/minus.png')
+		self.plus_left.set_position(300, 75)
+		self.minus_left.set_position(100, 75)
+
+		self.plus_right = arcade.Sprite('images/plus.png')
+		self.minus_right = arcade.Sprite('images/minus.png')
+		self.plus_right.set_position(900, 75)
+		self.minus_right.set_position(700, 75)
 
 		for i in range(1, self.total_cat):
 			self.cat_sprites.append(arcade.Sprite('images/' + str(randint(1, 12)) + '.png'))
@@ -28,8 +33,11 @@ class MainScreen(arcade.Window):
 		for sprite in self.cat_sprites:
 			sprite.draw()
 
-		self.plus.draw()
-		self.minus.draw()
+		self.plus_left.draw()
+		self.minus_left.draw()
+
+		self.plus_right.draw()
+		self.minus_right.draw()
 
 if __name__ == '__main__':
 	window = MainScreen(SCREEN_WIDTH, SCREEN_HEIGHT)
