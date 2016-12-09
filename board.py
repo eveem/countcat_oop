@@ -9,6 +9,9 @@ class MainScreen(arcade.Window):
 		super().__init__(width, height)
 		arcade.set_background_color(arcade.color.BABY_PINK)
 
+		self.check_left = 0
+		self.check_right = 0
+
 		start = randint(0, 9)
 		self.score_left = start
 		self.score_right = start
@@ -50,6 +53,9 @@ class MainScreen(arcade.Window):
 		self.number_right.set_position(800, 75)
 		self.number_right.draw()
 
+		arcade.draw_text(str(self.check_left), self.width - 60, self.height - 60, arcade.color.BLACK, 20)
+		# arcade.draw_text(str(self.check_right), self.width - 60, self.height - 60, arcade.color.BLACK, 20)
+
 	def on_key_press(self, key, key_modifiers):
 		if key == arcade.key.A:
 			self.score_left -= 1
@@ -70,6 +76,12 @@ class MainScreen(arcade.Window):
 			self.score_right = 0
 		elif self.score_right < 0:
 			self.score_right = 9
+
+		if key == arcade.key.S and self.score_left == self.total_cat - 1:
+			self.check_left += 1
+
+		if key == arcade.key.K and self.score_right == self.total_cat - 1:
+			self.check_right += 1
 
 if __name__ == '__main__':
 	window = MainScreen(SCREEN_WIDTH, SCREEN_HEIGHT)
