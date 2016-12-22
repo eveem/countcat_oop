@@ -41,7 +41,7 @@ class World:
 
 		self.cats = []
 		for i in range(10):
-			cat = Cat(self, randint(150, 850), randint(250, 475))
+			cat = Cat(self, randint(150, 850), randint(250, 425))
 			self.cats.append(cat)
 
 		self.paws = []
@@ -60,6 +60,7 @@ class World:
 		start_number = randint(0, 9)
 		self.number_count = [start_number, start_number]
 		self.point = [0, 0]
+		self.winning = [False, False]
 
 	def on_key_press(self, key, key_modiriers):
 		if key == arcade.key.A:
@@ -85,6 +86,10 @@ class World:
 		if key == arcade.key.K and self.number_count[1] == World.TOTAL_CAT:
 			self.point[1] += 1
 			self.correct = True
+
+		for i in range(2):
+			if self.point[i] == 5:
+				self.winning[i] = True
 
 		if self.correct:
 			World.TOTAL_CAT = randint(3, 9)
