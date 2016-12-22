@@ -11,6 +11,10 @@ class Cat(Model):
 	def __init__(self, world, x, y):
 		super().__init__(world, x, y)
 
+class Button(Model):
+	def __init__(self, world, x, y):
+		super().__init__(world, x, y)
+
 class World:
 	TOTAL_CAT = randint(0, 9)
 
@@ -18,8 +22,13 @@ class World:
 		self.width = width
 		self.height = height
 
-		# self.increase_button = Button(self, 100, 75, 0)
-		# self.decrease_button = Button(self, 300, 75, 0)
+		self.decrease_button = []
+		self.increase_button = []
+		self.decrease_button.append(Button(self, 100, 75))
+		self.decrease_button.append(Button(self, 700, 75))
+		self.increase_button.append(Button(self, 300, 75))
+		self.increase_button.append(Button(self, 900, 75))
+		# self.decrease = Button(self, 300, 75)
 		# self.increase_button[1] = Button(self, 700, 75, 0)
 		# self.decrease_button[1] = Button(self, 900, 75, 0)
 
@@ -53,7 +62,3 @@ class World:
 
 		if key == arcade.key.K and self.number[1] == self.total_cat - 1:
 			self.point[1] += 1
-
-class Button(Model):
-	def __init__(self, world, x, y):
-		super().__init__(world, x, y)
