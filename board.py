@@ -48,6 +48,12 @@ class MainScreen(arcade.Window):
 			self.decrease_sprite[button_index].draw()
 			self.increase_sprite[button_index].draw()
 
+		self.number_left = ModelSprite('images/' + str(self.world.number_count[0]) + '.png', model=self.world.number[0])
+		self.number_right = ModelSprite('images/' + str(self.world.number_count[1]) + '.png', model=self.world.number[1])
+		
+		self.number_left.draw()
+		self.number_right.draw()
+
 	def on_key_press(self, key, key_modifiers):
 		self.world.on_key_press(key, key_modifiers)
 
