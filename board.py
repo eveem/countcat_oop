@@ -38,6 +38,10 @@ class MainScreen(arcade.Window):
 		for cat in self.world.cats:
 			self.cats_sprite.append(ModelSprite('images/CAT' + str(randint(1, 12)) + '.png', model=cat))
 
+		self.paw_sprite = []
+		for i in range(10):
+			self.paw_sprite.append(ModelSprite('images/paw.png', scale=0.3, model=self.world.paws[i]))
+
 	def on_draw(self):
 		arcade.start_render()
 
@@ -47,6 +51,12 @@ class MainScreen(arcade.Window):
 		for button_index in range(2):
 			self.decrease_sprite[button_index].draw()
 			self.increase_sprite[button_index].draw()
+
+		for i in range(0, self.world.point[0]):
+			self.paw_sprite[i].draw()
+
+		for i in range(5, 5 + self.world.point[1]):
+			self.paw_sprite[i].draw()		
 
 		self.number_left = ModelSprite('images/' + str(self.world.number_count[0]) + '.png', model=self.world.number[0])
 		self.number_right = ModelSprite('images/' + str(self.world.number_count[1]) + '.png', model=self.world.number[1])
