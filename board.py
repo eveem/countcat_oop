@@ -1,4 +1,5 @@
 import arcade
+import arcade.sound
 from random import randint
 
 from models import World
@@ -40,16 +41,22 @@ class MainScreen(arcade.Window):
 
 		self.cats_sprite = []
 		for i in range(self.world.TOTAL_CAT):
-			self.cats_sprite.append(ModelSprite('images/CAT' + str(randint(1, 12)) + '.png', model=self.world.cats[randint(0, 9)]))
+			self.cats_sprite.append(ModelSprite('images/CAT' + str(randint(1, 12)) + '.png', model=self.world.cats[i]))
+
+
+		# self.cat_sound = arcade.sound.load_sound("sounds/cat.mp3")
+		self.cat_sound = arcade.load_sound("sounds/cat.mp3")
+		arcade.play_sound(self.cat_sound)
+		# arcade.sound.play_sound(self.cat_sound)
 
 	def on_draw(self):
 		arcade.start_render()
 		# print(self.world.TOTAL_CAT)
-		
+
 		if self.world.correct:
 			self.cats_sprite = []
 			for i in range(self.world.TOTAL_CAT):
-				self.cats_sprite.append(ModelSprite('images/CAT' + str(randint(1, 12)) + '.png', model=self.world.cats[randint(0, 9)]))
+				self.cats_sprite.append(ModelSprite('images/CAT' + str(randint(1, 12)) + '.png', model=self.world.cats[i]))
 			self.world.correct = False
 
 		for cat in self.cats_sprite:
