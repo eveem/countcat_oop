@@ -52,14 +52,17 @@ class MainScreen(arcade.Window):
 		self.warning_sprite = arcade.Sprite('images/warning.png', scale=0.8)
 		self.warning_sprite.set_position(500, 565)
 
+		self.ending_cat = arcade.Sprite('images/CAT1.png', scale=1.5)
+		self.ending_cat.set_position(500, 275)
+
 	def on_draw(self):
 		arcade.start_render()
-		# print(self.world.TOTAL_CAT)
 		
 		self.warning_sprite.draw()
 
 		for i in range(2):
 			if self.world.winning[i]:
+				self.ending_cat.draw()
 				self.win_sprite[i].draw()
 				self.end = True
 				break
