@@ -1,4 +1,4 @@
-import arcade.key
+import arcade
 from random import randint
 
 class Model:
@@ -24,9 +24,11 @@ class Paw(Model):
 		super().__init__(world, x, y)
 
 class World:
-	TOTAL_CAT = randint(1, 9)
+	TOTAL_CAT = randint(3, 9)
 
 	def __init__(self, width, height):
+		self.correct = False
+
 		self.width = width
 		self.height = height
 
@@ -38,7 +40,7 @@ class World:
 		self.increase_button.append(Button(self, 900, 100))
 
 		self.cats = []
-		for i in range(World.TOTAL_CAT):
+		for i in range(10):
 			cat = Cat(self, randint(150, 850), randint(250, 475))
 			self.cats.append(cat)
 
@@ -49,7 +51,7 @@ class World:
 			self.paws.append(paw)
 			if i == 4:
 				x_pos = 650
-			x_pos += 50
+			x_pos += 47
 
 		self.number = []
 		self.number.append(Number(self, 200, 100))
@@ -76,8 +78,13 @@ class World:
 			if self.number_count[i] < 0:
 				self.number_count[i] = 9
 
-		if key == arcade.key.S and self.number_count[0] == self.TOTAL_CAT:
+		if key == arcade.key.S and self.number_count[0] == World.TOTAL_CAT:
 			self.point[0] += 1
+			self.correct = True
 
-		if key == arcade.key.K and self.number_count[1] == self.TOTAL_CAT:
+		if key == arcade.key.K and self.number_count[1] == World.TOTAL_CAT:
 			self.point[1] += 1
+			self.correct = True
+
+		if self.correct:
+			World.TOTAL_CAT = randint(3, 9)
