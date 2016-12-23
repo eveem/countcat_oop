@@ -57,7 +57,6 @@ class MainScreen(arcade.Window):
 	def on_draw(self):
 		arcade.start_render()
 		self.warning_sprite.draw()
-
 		for i in range(2):
 			if self.world.winning[i]:
 				self.ending_cat.draw()
