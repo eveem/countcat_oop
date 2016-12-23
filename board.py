@@ -56,7 +56,6 @@ class MainScreen(arcade.Window):
 
 	def on_draw(self):
 		arcade.start_render()
-
 		self.warning_sprite.draw()
 
 		for i in range(2):
