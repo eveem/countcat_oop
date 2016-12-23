@@ -27,7 +27,7 @@ class World:
 	TOTAL_CAT = randint(3, 9)
 
 	def __init__(self, width, height):
-		self.background_sound = arcade.load_sound('sounds/meow.ogg')
+		self.click_sound = arcade.load_sound('sounds/meow.ogg')
 		self.correct = False
 
 		self.width = width
@@ -96,4 +96,4 @@ class World:
 			World.TOTAL_CAT = randint(3, 9)
 
 		if key:
-			arcade.play_sound(self.background_sound)
+			arcade.play_sound(self.click_sound)

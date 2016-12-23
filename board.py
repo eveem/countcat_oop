@@ -54,6 +54,9 @@ class MainScreen(arcade.Window):
 		self.ending_cat = arcade.Sprite('images/CAT1.png', scale=1.5)
 		self.ending_cat.set_position(500, 275)
 
+		self.background_sound = arcade.load_sound('sounds/background.mp3')
+		arcade.play_sound(self.background_sound)
+
 	def on_draw(self):
 		arcade.start_render()
 		self.warning_sprite.draw()
